@@ -1,0 +1,20 @@
+version: "3"
+services:
+  frontend: 
+    image: jakubstani/frontendtictactoepvp:v2
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+    - tictactoepvp
+    depends_on:
+      - backend
+  backend: 
+    image: jakubstani/backend:v2
+    ports:
+      - "8000:8000"
+    networks:
+    - tictactoepvp
+networks:
+  tictactoepvp:
+    driver: bridge
